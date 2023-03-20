@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources:addresses,only:[:create,:index,:edit,:update,:destroy]
   end
 
-  get 'admin'=>'admin/homes#top'
+  get 'admin'=>'admin/homes#top',as:'admin'
 
   namespace :admin do
     resources:items,only:[:new,:create,:index,:show,:edit,:update]
