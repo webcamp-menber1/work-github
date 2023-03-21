@@ -12,15 +12,15 @@
 <%= f.text_area:introduction,size:"30x7",id:"itemIntroduction",placeholder:"ここに説明文を記述します" %><br>
 
 <label for="genre">ジャンル</label>
-<%= f.text_field:genre_id,id:"genre",placeholder:"--選択してください--" %><br>
+<%= f.select:genre_id,options_from_collection_for_select(Genre.all,:id,:name),{ prompt: '--選択してください--' } %><br>
 
 <label for="price">税抜価格</label>
 <%= f.text_field:price,id:"price",placeholder:"1000" %>円<br>
 
 <rabel for="is_active">販売ステータス</rabel>
-<%= f.radio_button :is_active,:true %>
+<%= f.radio_button :is_active,:"true" %>
 <%= f.label:is_active,"販売中",{value: :ture, style: "display: inline-block;"} %>
-<%= f.radio_button :is_active,:false %>
+<%= f.radio_button :is_active,:"false" %>
 <%= f.label:is_active,"販売停止中",{value: :false, style: "display: inline-block;"} %><br>
 
 <%= f.submit"新規登録" %>
