@@ -4,16 +4,21 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    item=Item.new(item_params)
-    item.save
-    redirect_to admin_item_path(item.id)
+    @item=Item.new(item_params)
+    if @item.save
+       flash[:notice]="登録に成功しました。"
+       redirect_to admin_item_path(@item.id)
+    else
+      render:new
+    end
   end
 
   def index
-    @items=Item.all
+    @items=Item.page(params[:page])
   end
 
   def show
+  
   end
 
   def edit

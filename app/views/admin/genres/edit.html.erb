@@ -3,7 +3,9 @@
 <% if @genre.errors.any? %>
   <%= @genre.errors.count %>件のエラーが発生しました。
   <% @genre.errors.full_messages.each do |message| %>
-    <%= message %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
   <% end %>
 <% end %>
 
