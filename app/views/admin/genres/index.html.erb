@@ -1,5 +1,14 @@
 <h4>ジャンル一覧・追加</h4>
 
+<%= flash[:notice] %>
+
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました。
+  <% @genre.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <%= form_with model:@genre,url:'/admin/genres',method: :post do |f| %>
 
 <label for="genreName">ジャンル名</label>

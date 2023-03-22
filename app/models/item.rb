@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   has_many:order_details, dependent: :destroy
   belongs_to:genre
   
+  enum is_active: {販売中:true,販売停止中:false}
+  
   def get_image(width,height)
     unless image_attached?
       file_path=Rails.root.join('app/assets/images/no_image.jpg')
