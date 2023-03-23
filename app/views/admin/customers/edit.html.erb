@@ -1,2 +1,43 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<% if @customer.errors.any? %>
+<%= @customer.errors.count %>件のエラーが発生しました。
+<% @customer.errors.full_messages.each do |message| %>
+  <ul>
+    <li><%= message %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+<h4><%= "#{@customer.last_name}#{@customer.first_name}" %>さんの会員情報編集</h4>
+
+<%= form_with model:@customer,url:admin_customer_path(@customer.id),method: :patch do |f| %>
+
+<label>会員ID</label>
+<%= f.text_field:id %><br>
+
+<label for="name">氏名</label>
+<%= f.text_field:last_name,id:"name" %> <%= f.text_field:first_name %><br>
+
+<label for="kana">フリガナ</label>
+<%= f.text_field:last_name_kana,id:"kana" %> <%= f.text_field:first_name_kana %><br>
+
+<label for="postal">郵便番号</label>
+<%= f.text_field:postal_code,id:"postal" %><br>
+
+<label for="address">住所</label>
+<%= f.text_field:address,id:"address" %><br>
+
+<label for="telephone">電話番号</label>
+<%= f.text_field:telephone_number,id:"telephone" %><br>
+
+<label for="email">メールアドレス</label>
+<%= f.text_field:email,id:"email" %><br>
+
+<label for="status">会員ステータス</label>
+<%= f.radio_button:is_deleted,"有効",id:"status" %>
+<%= f.label:is_deleted,"有効",{value: :false,style: "display :inline-block"} %>
+<%= f.radio_button:is_deleted,"退会" %>
+<%= f.label:is_deleted,"退会",{value: :true,style: "display :inline-block"} %><br>
+
+<%= f.submit"変更を保存" %>
+
+<% end %>
