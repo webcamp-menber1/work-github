@@ -23,7 +23,7 @@
     <th>メールアドレス</th><td><%= @customer.email %></td>
   </tr>
   <tr>
-    <th>会員ステータス</th><td><%= @customer.is_deleted %></td>
+    <th>会員ステータス</th><td><%= Customer.is_deleteds_i18n[:"#{@customer.is_deleted}"] %></td>
   </tr>
 </table>
 

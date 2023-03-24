@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
   validates :postal_code,presence:true
   validates :address,presence:true
   validates :telephone_number,presence:true
-  validates :is_deleted,inclusion: ["有効","退会"]
+  validates :is_deleted,inclusion: ["valid","withdrawal"]
 
-  enum is_deleted: {有効:false,退会:true}
+  enum is_deleted: {valid: false,withdrawal: true},_suffix: true
 end

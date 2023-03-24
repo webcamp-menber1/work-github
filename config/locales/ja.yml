@@ -1,0 +1,21 @@
+ja:
+  enums:
+   order:
+    order_status:
+      not_payment: "入金待ち"
+      payment_confirmation: "入金確認"
+      production: "製作中"
+      preparing_to_ship: "発送準備中"
+      sent: "発送済み"
+
+   customer:
+    is_deleted:
+      valid: "有効"
+      withdrawal: "退会"
+
+   item:
+    is_active:
+      sale: "販売中"
+      suspended_sales: "販売停止中"
+
+

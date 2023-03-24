@@ -15,10 +15,10 @@
         <td><%= customer.id %></td>
         <td><%= link_to "#{customer.last_name}#{customer.first_name}",admin_customer_path(customer.id) %></td>
         <td><%= customer.email %></td>
-        <td><%= customer.is_deleted %></td>
+        <td><%= Customer.is_deleteds_i18n[:"#{customer.is_deleted}"] %></td>
+
       </tr>
      <% end %>
   </thead>
 </table>
-
 <%= paginate @customers %>

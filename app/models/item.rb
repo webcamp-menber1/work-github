@@ -9,10 +9,10 @@ class Item < ApplicationRecord
   validates :introduction, length:{ minimum:1,maximum:255 }
   validates :genre_id,     presence:true
   validates :price,        presence:true
-  validates :is_active,    inclusion: ["販売中","販売停止中"]
+  validates :is_active,    inclusion: ["sale","suspended_sales"]
 
 
-  enum is_active: {販売中:true,販売停止中:false}
+  enum is_active: {sale:true,suspended_sales:false},_suffix: true
 
   def get_image(width,height)
     unless image.attached?
