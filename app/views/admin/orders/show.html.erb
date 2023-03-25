@@ -1,2 +1,13 @@
 <h4>注文履歴詳細</h4>
+<%= form_with model:@order,url:admin_order_path(@order.id),method: :patch do |f| %>
 
+
+  <%= f.label:購入者 %><%= "#{@order.customer.last_name}#{@order.customer.first_name}" %><br>
+  <%= f.label:注文日 %><%= @order.updated_at.strftime("%Y/%m/%d") %><br>
+  <%= f.label:配送先 %>〒<%= @order.delivery_postal_code %> <%= @order.delivery_address %><%= @order.delivery_name %><br>
+  <%= f.label:支払方法 %><%= Order.payment_methods_i18n[:"#{@order.payment_method}"] %><br>
+  注文ステータス
+  <%= f.submit"更新" %>
+
+
+<% end %>
