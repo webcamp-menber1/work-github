@@ -13,12 +13,20 @@
   <tbody>
 
     <% @orders.each do |order| %>
-    <td><%= order.created_at %></td>
-    <td><%= "#{order.customer.last_name}#{order.customer.first_name}" %></td>
-    <td><%= order.sum(:order_details.amount) %></td>
-    <td><%= Order.order_statuses_i18n[:"#{order.order_status}"] %></td>
+
+      <tr>
+        <td>
+          <%= link_to order.updated_at.strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id) %>
+        </td>
+        <td><%= "#{order.customer.last_name}#{order.customer.first_name}" %></td>
+        <td><%= order.order_details.sum(:amount) %>
+
+        </td>
+        <td><%= Order.order_statuses_i18n[:"#{order.order_status}"] %></td>
+
+      </tr>
     <% end %>
+
   </tbody>
 </table>
-
 <%= paginate @orders %>

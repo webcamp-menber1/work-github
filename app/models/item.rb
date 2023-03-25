@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :is_active,    inclusion: ["sale","suspended_sales"]
 
 
-  enum is_active: {sale:true,suspended_sales:false},_suffix: true
+  enum is_active: {sale:true,suspended_sales:false}
 
   def get_image(width,height)
     unless image.attached?
