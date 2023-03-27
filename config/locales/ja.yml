@@ -1,6 +1,9 @@
 ja:
   enums:
    order:
+    payment_method:
+     credit_card: "クレジットカード"
+     transfer: "銀行振込"
     order_status:
       not_payment: "入金待ち"
       payment_confirmation: "入金確認"
@@ -8,9 +11,7 @@ ja:
       preparing_to_ship: "発送準備中"
       sent: "発送済み"
 
-   payment_method:
-     credit_card: "クレジットカード"
-     transfer: "銀行振込"
+
 
    customer:
     is_deleted:
@@ -21,6 +22,14 @@ ja:
     is_active:
       sale: "販売中"
       suspended_sales: "販売停止中"
+
+   order_detail:
+    production_status:
+      cannot_start: "着手不可"
+      wait_production: "制作待ち"
+      making: "制作中"
+      produced: "制作完了"
+
 
   activerecord:
     errors:
