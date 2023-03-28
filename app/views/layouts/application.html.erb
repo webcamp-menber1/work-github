@@ -11,85 +11,76 @@
   </head>
 
   <body>
-    <header>
-      <nav class="nav">
-        <div class="container">
-          <a class="navber-brand" href='/'>ながのCAKE</a>
-          <% if admin_signed_in? %>
-            <ul class="nav">
-              <li class="nav-item">
-                <%= link_to '/admin/items' do %>
-                  <%= "商品一覧" %>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to '/admin/customers' do %>
-                  <%= "会員一覧" %>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to '/admin' do %>
-                  <%= "注文履歴一覧" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to '/admin/genres' do %>
-                  <%= "ジャンル一覧" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_admin_session_path,method: :delete do %>
-                  <%= "ログアウト" %>
-                <% end %>
-              </li>
-            </ul>
-          <% elsif customer_signed_in? %>
-            <ul>
-              <li>
-                <%= link_to '/customers/my_page' do %>
+    <header class="shadow-sm">
+      <nav>
+        <div class="container-fluid">
+          <div class="row">
+　　　　    <div class="col align-self-start p-0">
+              <a class="navber-brand btn btn-outline-secondary text-dark m-3" href='/'>ながのCAKE</a>
+            </div>
+            <% if admin_signed_in? %>
+            <div class="col align-self-end">
+              <%= link_to '/admin/items',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
+                <%= "商品一覧" %>
+              <% end %>
+
+              <%= link_to '/admin/customers',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
+                <%= "会員一覧" %>
+              <% end %>
+
+              <%= link_to '/admin',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
+                <%= "注文履歴一覧" %>
+              <% end %>
+
+              <%= link_to '/admin/genres',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
+                <%= "ジャンル一覧" %>
+              <% end %>
+
+              <%= link_to destroy_admin_session_path,method: :delete,class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
+                <%= "ログアウト" %>
+              <% end %>
+            </div>
+
+            <% elsif customer_signed_in? %>
+              <div class="col align-self-end">
+                <%= link_to '/customers/my_page',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "マイページ" %>
                 <% end %>
-              </li>
-              <li>
-                <%= link_to '/items' do %>
+
+                <%= link_to '/items',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "商品一覧" %>
                 <% end %>
-              </li>
-              <li>
-                <%= link_to '/cart_items' do %>
+
+                <%= link_to '/cart_items',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "カート" %>
                 <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_customer_session_path,method: :delete do %>
+
+                <%= link_to destroy_customer_session_path,method: :delete,class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "ログアウト" %>
                 <% end %>
-              </li>
-            </ul>
-          <% else %>
-            <ul class="nav">
-                <li class="nav-item">
-                <%= link_to about_path do %>
+              </div>
+
+
+            <% else %>
+              <div class="col align-self-end">
+                <%= link_to about_path,class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "About" %>
                 <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to '/items' do %>
+
+                <%= link_to '/items',class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "商品一覧" %>
                 <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_customer_registration_path do %>
+
+                <%= link_to new_customer_registration_path,class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "新規登録" %>
                 <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_customer_session_path do %>
+
+                <%= link_to new_customer_session_path,class:"btn btn-outline-secondary btn-sm text-dark m-3" do %>
                   <%= "ログイン" %>
                 <% end %>
-              </li>
-            </ul>
-          <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </nav>
     </header>
