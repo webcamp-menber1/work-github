@@ -1,11 +1,14 @@
-<% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました。
-  <% @genre.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
+
+<div class="m-3">
+  <% if @genre.errors.any? %>
+    <h5><%= @genre.errors.count %>件のエラーが発生しました。</h5>
+    <% @genre.errors.full_messages.each do |message| %>
+      <ul>
+        <li><%= message %></li>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <h5 style="margin:50px 70px;"><span class="bg-light">　ジャンル編集　</span></h5>
 
