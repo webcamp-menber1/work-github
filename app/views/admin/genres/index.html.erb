@@ -13,17 +13,16 @@
 
   <h5 style="margin:50px 70px;"><span class="bg-light">　ジャンル一覧・追加　</span></h5>
 
-
   <%= form_with model:@genre,url:'/admin/genres',method: :post do |f| %>
   <div class="row ml-5">
     <label for="genreName" class="col-md-2 col-form-label mt-1">ジャンル名</label>
 
     <div class="col-lg-3 col-md-4">
-      <%=f.text_field:name,id:"genreName",class:"mt-2" %>
+      <%= f.text_field:name,id:"genreName",class:"mt-2" %>
     </div>
 
     <div class="col-3">
-      <%=f.submit"新規登録",class:"btn btn-success mt-1" %>
+      <%= f.submit"新規登録",class:"btn btn-success mt-1" %>
     </div>
 
   </div>
