@@ -17,6 +17,8 @@ class Admin::CustomersController < ApplicationController
       flash[:notice]="変更に成功しました"
       redirect_to admin_customer_path(@customer.id)
     else
+      @customer.last_name=Customer.find(params[:id]).last_name
+      @customer.first_name=Customer.find(params[:id]).first_name
       render:edit
     end
   end
