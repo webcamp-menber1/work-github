@@ -1,15 +1,17 @@
-<% if @item.errors.any? %>
-  <%= @item.errors.count %>件のエラーが発生しました。
-  <% @item.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-<% end %>
-
 <div class="container">
 
-  <p class="mt-4 ml-5"><span class="bg-light">　商品新規登録　</span></p>
+  <div class="m-3">
+    <% if @item.errors.any? %>
+      <h5><%= @item.errors.count %>件のエラーが発生しました。</h5>
+      <% @item.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h5 class="m-5"><span class="bg-light">　商品新規登録　</span></h5>
 
 
     <%=form_with model:@item,url:'/admin/items',method: :post do |f| %>
@@ -44,7 +46,7 @@
       <div class="row justify-content-center">
         <label for="price" class="col-sm-2 col-form-label">税抜価格</label>
         <div class="col-sm-5">
-          <%= f.text_field:price,id:"price", :size=>"30",placeholder:"1000" %>円
+          <p><%= f.text_field:price,id:"price", :size=>"30",placeholder:"1000" %>円</p>
         </div>
       </div>
 
