@@ -1,70 +1,71 @@
-<% if @item.errors.any? %>
-  <%= @item.errors.count %>件のエラーが発生しました。
-  <% @item.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-<% end %>
-
 <div class="container">
 
-  <p class="mt-4 ml-5"><span class="bg-light">　商品新規登録　</span></p>
-
-
-    <%=form_with model:@item,url:'/admin/items',method: :post do |f| %>
-      <div class="row justify-content-center">
-        <label for="itemImage" class="col-sm-2 col-form-label">商品画像</label>
-        <div class="col-sm-5">
-          <%= f.file_field:image,id:"itemImage",accept:"image/*" %>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <label for="itemName" class="col-sm-2 col-form-label">商品名　</label>
-        <div class="col-sm-5">
-          <%= f.text_field:name,id:"itemName", :size=>"30",placeholder:"商品名" %>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <label for="itemIntroduction" class="col-sm-2 col-form-label">商品説明</label>
-        <div class="col-sm-5">
-          <%= f.text_area:introduction,size:"29x7",id:"itemIntroduction",placeholder:"ここに説明文を記述します" %><br>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <label for="genre" class="col-sm-2 col-form-label">ジャンル</label>
-        <div class="col-sm-5 pt-1">
-          <%= f.select:genre_id,options_from_collection_for_select(Genre.all,:id,:name),{include_blank:'--選択してください--'},class:"select" %><br>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <label for="price" class="col-sm-2 col-form-label">税抜価格</label>
-        <div class="col-sm-5">
-          <%= f.text_field:price,id:"price", :size=>"30",placeholder:"1000" %>円
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <label for="is_active" class="col-sm-2 col-form-label">販売ステータス</label>
-        <div class="col-sm-5 pt-2">
-          <%= f.radio_button :is_active,"sale",id:"is_active",checked:true %>
-          <%= f.label:is_active,"販売中",{style: "display: inline-block;"} %>
-          <%= f.radio_button :is_active,"suspended_sales",class:"ml-3" %>
-          <%= f.label:is_active,"販売停止中",{style: "display: inline-block;"} %>
-        </div>
-      </div>
-
-　　　<div class="row justify-content-center">
-　　　  <lavel class="col-sm-2 col-form-label"></lavel>
-　　　    <div class="col-sm-5 pt-2">
-            <%= f.submit"新規登録",class:"btn btn-success col-4" %>
-          </div>
-      </div>
-
+  <div class="m-3">
+    <% if @item.errors.any? %>
+      <h5><%= @item.errors.count %>件のエラーが発生しました。</h5>
+      <% @item.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
     <% end %>
+  </div>
+
+  <h5 style="margin:50px 100px;"><span class="bg-light">　商品新規登録　</span></h5>
+
+  <%= form_with model:@item,url:'/admin/items',method: :post do |f| %>
+    <div class="row justify-content-center">
+      <label for="itemImage" class="col-sm-2 col-form-label">商品画像</label>
+      <div class="col-sm-5">
+        <%= f.file_field:image,accept:"image/*",id:"itemImage" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <label for="itemName" class="col-sm-2 col-form-label">商品名　</label>
+      <div class="col-sm-5">
+        <%= f.text_field:name,id:"itemName", :size=>"30",placeholder:"商品名" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <label for="itemIntroduction" class="col-sm-2 col-form-label">商品説明</label>
+      <div class="col-sm-5">
+        <%= f.text_area:introduction,size:"29x7",id:"itemIntroduction",placeholder:"ここに説明文を記述します" %><br>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <label for="genre" class="col-sm-2 col-form-label">ジャンル</label>
+      <div class="col-sm-5 pt-1">
+        <%= f.select:genre_id,options_from_collection_for_select(Genre.all,:id,:name),{include_blank:'--選択してください--'},class:"select" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <label for="price" class="col-sm-2 col-form-label">税抜価格</label>
+      <div class="col-sm-5">
+        <p><%= f.text_field:price,id:"price", :size=>"30",placeholder:"1000" %>円</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <label for="is_active" class="col-sm-2 col-form-label">販売ステータス</label>
+      <div class="col-sm-5 pt-2">
+        <%= f.radio_button:is_active,"sale",id:"is_active",checked:true %>
+        <%= f.label:is_active,"販売中",{style: "display: inline-block;"} %>
+        <%= f.radio_button:is_active,"suspended_sales",class:"ml-3" %>
+        <%= f.label:is_active,"販売停止中",{style: "display: inline-block;"} %>
+      </div>
+    </div>
+
+　　<div class="row justify-content-center">
+　　　<lavel class="col-sm-2 col-form-label"></lavel>
+　　　<div class="col-sm-5 pt-2">
+        <%= f.submit"新規登録",class:"btn btn-success col-4" %>
+      </div>
+    </div>
+
+  <% end %>
 
 </div>

@@ -1,40 +1,55 @@
-<h4>ジャンル一覧・追加</h4>
+<div class="container">
 
-<% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました。
-  <% @genre.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-<% end %>
-
-<%= form_with model:@genre,url:'/admin/genres',method: :post do |f| %>
-
-<label for="genreName">ジャンル名</label>
-<%=f.text_field:name,id:"genreName" %>
-
-<%=f.submit"新規登録" %>
-
-<% end %>
-
-<table>
-  <thead>
-    <th>ジャンル</th>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td><%= genre.name %></td>
-        <td><%=link_to edit_admin_genre_path(genre.id) do %>
-              <%= "編集する" %>
-            <% end %>
-        </td>
-      </tr>
+  <div class="m-3">
+    <% if @genre.errors.any? %>
+      <h5><%= @genre.errors.count %>件のエラーが発生しました。</h5>
+      <% @genre.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
     <% end %>
+  </div>
 
-  </tbody>
-</table>
+  <h5 style="margin:50px 70px;"><span class="bg-light">　ジャンル一覧・追加　</span></h5>
+
+  <%= form_with model:@genre,url:'/admin/genres',method: :post do |f| %>
+  <div class="row ml-5">
+    <label for="genreName" class="col-md-2 col-form-label mt-1">ジャンル名</label>
+
+    <div class="col-lg-3 col-md-4">
+      <%= f.text_field:name,id:"genreName",class:"mt-2" %>
+    </div>
+
+    <div class="col-3">
+      <%= f.submit"新規登録",class:"btn btn-success mt-1" %>
+    </div>
+
+  </div>
+  <% end %>
 
 
+  <div style="width:500px; "class="row">
+    <table class="table m-5">
+      <thead>
+        <tr class="table-secondary">
+          <th style="width: 60%" class="text-center">ジャンル</th>
+          <th style="width: 40%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+            <td><%=link_to edit_admin_genre_path(genre.id),class:"btn btn-success" do %>
+                  <%= "編集する" %>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
