@@ -4,14 +4,28 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer=Customer.find(current_customer.id)
   end
 
   def update
+    @customer=Customer.find(current_customer.id)
+    if @customer.update(customer_params)
+      flash[:notice]="変更に成功しました"
+      redirect_to '/customers/my_page'
+    else
+      render:edit
+    end
   end
 
   def confirm
   end
 
   def withdrawal
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:email,:encrypted_passwprd,:postal_code,:address,:telephone_number,:is_deleted)
   end
 end
