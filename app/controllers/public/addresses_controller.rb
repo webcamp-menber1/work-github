@@ -1,12 +1,13 @@
 class Public::AddressesController < ApplicationController
 
   def create
-    @address=Address.new
-    @address.customer_id==current_customer.id
+    @address=Address.new(address_params)
+    @address.customer_id=current_customer.id
     if @address.save
       flash[:notice]="登録に成功しました"
       redirect_to '/addresses'
     else
+      @addresses=Address.all
       render:index
     end
   end
@@ -23,6 +24,9 @@ class Public::AddressesController < ApplicationController
   end
 
   def destroy
+    address=Address.find(params[:id])
+    address.destroy
+    redirect_to '/addresses'
   end
 
 
