@@ -18,9 +18,17 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address=Address.find(params[:id])
   end
 
   def update
+    @address=Address.find(params[:id])
+    if @address.update(address_params)
+       flash[:notice]="変更に成功しました。"
+       redirect_to '/addresses'
+    else
+       render:edit
+    end
   end
 
   def destroy
