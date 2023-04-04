@@ -7,14 +7,14 @@ class Public::AddressesController < ApplicationController
       flash[:notice]="登録に成功しました"
       redirect_to '/addresses'
     else
-      @addresses=Address.all
+      @addresses=current_customer.addresses
       render:index
     end
   end
 
   def index
     @address=Address.new
-    @addresses=Address.all
+    @addresses=current_customer.addresses
   end
 
   def edit
