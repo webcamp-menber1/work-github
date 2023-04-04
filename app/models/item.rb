@@ -14,6 +14,10 @@ class Item < ApplicationRecord
 
   enum is_active: {sale:true,suspended_sales:false}
 
+  def with_tax_price
+    (price*1.1).floor
+  end
+
   def get_image(width,height)
     unless image.attached?
       file_path=Rails.root.join('app/assets/images/no_image.jpg')
