@@ -44,7 +44,7 @@
 <table>
   <tr>
     <th>支払方法</th>
-    <td><%= params[:order][:payment_method] %></td>
+    <td><%= Order.payment_methods_i18n[:"#{params[:order][:payment_method]}"] %></td>
   </tr>
 
   <tr>
