@@ -41,16 +41,30 @@
   </tr>
 </table>
 
-<%= params[:order][:select_address] %>
-<%= params[:order][:payment_method] %>
-<%= params[:order][:address] %>
-<%= params[:order][:postal_code] %>
-<%= params[:order][:name] %>
-<%= params[:order][:address_id] %>
+<table>
+  <tr>
+    <th>支払方法</th>
+    <td><%= params[:order][:payment_method] %></td>
+  </tr>
+
+  <tr>
+    <th>お届け先</th>
+    <td>
+      <%= @order.delivery_postal_code %>
+      <%= @order.delivery_address %><br>
+      <%= @order.delivery_name %>
+    </td>
 
 
-<%= form_with model:@order,url:confirm_orders_path,method: :post do |f| %>
-  <%= f.text_field:postage,:value => @postage %>
-  <%= f.text_field:payment,:value => @postage+@total %>
-  <%= f.text_field:order_status,:value => "not_payment" %>
+  </tr>
+</table>
+
+<%= form_with model:@order,url:'/orders',method: :post do |f| %>
+  <%= f.hidden_field:delivery_postal_code,:value => @order.delivery_postal_code %>
+  <%= f.hidden_field:delivery_address,:value => @order.delivery_address %>
+  <%= f.hidden_field:delivery_name,:value => @order.delivery_name %>
+  <%= f.hidden_field:postage,:value => @postage %>
+  <%= f.hidden_field:payment,:value => @postage+@total %>
+  <%= f.hidden_field:order_status,:value => "not_payment" %>
+  <%= f.submit"注文を確定する" %>
 <% end %>
