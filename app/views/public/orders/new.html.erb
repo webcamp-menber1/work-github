@@ -39,5 +39,10 @@
     <label for="name">宛名</label>
     <%= f.text_field:delivery_name,id:"name",placeholder:"令和道子" %><br>
 
-  <%= f.submit"確認画面へ進む" %>
+  <% if CartItem.find_by(customer_id:current_customer) %>
+    <%= f.submit"確認画面へ進む" %>
+  <% else %>
+    <p>カート内に商品がありません</P>
+  <% end %>
+
 <% end %>

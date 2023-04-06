@@ -7,9 +7,9 @@ class Public::OrdersController < ApplicationController
     @order=Order.new(order_params)
     @order.customer_id=current_customer.id
     if @order.save
+       current_customer.cart_items.destroy_all
        redirect_to done_orders_path
     else
-      
        render:new
     end
   end
