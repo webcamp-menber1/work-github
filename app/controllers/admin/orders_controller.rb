@@ -3,7 +3,6 @@ class Admin::OrdersController < ApplicationController
     @order=Order.find(params[:id])
     @order_details=@order.order_details.all
     @total=0
-    @billing_amount=0
 
 
   end
