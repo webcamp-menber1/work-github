@@ -18,7 +18,7 @@
     <%= f.label:payment_method_transfer,Order.payment_methods_i18n[:transfer]  %>
 
   <p>お届け先</p>
-    <%= f.radio_button:select_address,0 %>
+    <%= f.radio_button:select_address,0,checked:true %>
     <%= f.label:select_address,"ご自身の住所" %><br>
     <%= '〒'+current_customer.postal_code+'　'+current_customer.address %><br>
     <%= current_customer.last_name+current_customer.first_name %>
@@ -39,5 +39,10 @@
     <label for="name">宛名</label>
     <%= f.text_field:delivery_name,id:"name",placeholder:"令和道子" %><br>
 
-  <%= f.submit"確認画面へ進む" %>
+  <% if CartItem.find_by(customer_id:current_customer) %>
+    <%= f.submit"確認画面へ進む" %>
+  <% else %>
+    <p>カート内に商品がありません</P>
+  <% end %>
+
 <% end %>
