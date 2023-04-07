@@ -44,7 +44,7 @@
 <table>
   <tr>
     <th>支払方法</th>
-    <td><%= params[:order][:payment_method] %></td>
+    <td><%= Order.payment_methods_i18n[:"#{params[:order][:payment_method]}"] %></td>
   </tr>
 
   <tr>
@@ -66,5 +66,11 @@
   <%= f.hidden_field:postage,:value => @postage %>
   <%= f.hidden_field:payment,:value => @postage+@total %>
   <%= f.hidden_field:order_status,:value => "not_payment" %>
-  <%= f.submit"注文を確定する" %>
+
+  <% if CartItem.find_by(customer_id:current_customer) %>
+    <%= f.submit"注文を確定する" %>
+  <% else %>
+    <p>カート内に商品がありません</p>
+  <% end %>
+
 <% end %>
