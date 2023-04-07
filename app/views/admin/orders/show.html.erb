@@ -62,10 +62,10 @@
           <tr>
 
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.with_tax_price.to_s(:delimited) %></td>
+            <td><%= order_detail.price.to_s(:delimited) %></td>
             <td class="text-center"><%= order_detail.amount %></td>
-            <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-                <% @total +=order_detail.subtotal %>
+            <td><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
+                <% @total +=order_detail.price*order_detail.amount %>
 
             <td><%= form_with model:order_detail,url:admin_order_order_detail_path(order_detail.id),method: :patch do |f| %>
                 <%= f.select :production_status, OrderDetail.production_statuses.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
