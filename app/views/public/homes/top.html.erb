@@ -1,24 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="cake">
-      <p class="mx-auto">ようこそ、ながのCAKEへ！<br>
+    <div class="cake d-flex justify-content-center align-items-center mt-5">
+      <p class="text-nowrap font-weight-bold">
+       ようこそ、ながのCAKEへ！<br>
        このサイトは、ケーキ販売のECサイトになります。<br>
        会員でない方も商品の閲覧はできますが、<br>
        購入には会員登録が必要になります。</p>
     </div>
   </div>
 
-  <h3 class="ml-5">新着商品</h3>
+  <h3 class="m-5">新着商品</h3>
   <div class="row">
     <% @items.last(4).each do |item| %>
-      <div class="col-2 m-3 mx-auto">
-        <div class="row">
-          <%= link_to (image_tag item.get_image(200,200)),item_path(item.id) %>
+      <div class="col-lg-2 col-md-5 col-10 m-2 mx-auto">
+        <div style="width:200px; height:200px;" class="row mx-auto">
+          <%= link_to (image_tag item.get_image(200,200)),item_path(item.id),class:"d-flex align-items-center" %>
         </div>
-        <div class="row mt-2">
+        <div class="row mx-auto mt-3">
           <%= item.name %>
         </div>
-        <div class="row mt-2">
+        <div class="row mx-auto mt-3">
           ¥<%= item.price %>
         </div>
       </div>
