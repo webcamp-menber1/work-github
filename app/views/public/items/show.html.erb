@@ -1,10 +1,21 @@
-<%= image_tag @item.get_image(200,200) %>
-<%= @item.name %><br>
-<%= @item.introduction %><br>
-<p>¥<%= @item.price.to_s(:delimited) %>(税込）</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="d-flex justify-content-center col-sm-5 col-11 mb-3">
+      <%= image_tag @item.get_image(200,200) %>
+    </div>
+    <div class="col-sm-6 col-11">
+      <h4 class="font-weight-bold"><%= @item.name %></h4>
+      <p class="mt-3"><%= @item.introduction %></p>
+      <div class="mt-5 mb-3 d-flex justify-content-start">
+        <h5>¥<%= @item.price.to_s(:delimited) %></h5>
+        <p>(税込）</p>
+      </div>
 
-<%= form_with model:@cart_item,url:'/cart_items',method: :post do |f| %>
-  <%= f.hidden_field:item_id,:value => @item.id %>
-  <%= f.select:amount,*[1..100],{include_blank:'個数選択'},{required: true} %>
-  <%= f.submit"カートに入れる" %>
-<% end %>
+      <%= form_with model:@cart_item,url:'/cart_items',method: :post do |f| %>
+        <%= f.hidden_field:item_id,:value => @item.id %>
+        <%= f.select:amount,*[1..100],{include_blank:'個数選択　　'},{class:"mr-3 mt-3",required: true} %>
+        <%= f.submit"カートに入れる",class:"btn btn-success btn-sm mt-1" %>
+      <% end %>
+    </div>
+  </div>
+</div>
