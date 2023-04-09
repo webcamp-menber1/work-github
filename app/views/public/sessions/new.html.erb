@@ -2,21 +2,21 @@
 
   <h5 class="m-5"><span class="bg-light">　ログイン　</span></h5>
 
-  <h6 class="m-5"><span class="bg-light">　会員の方はこちらからログイン　</span></h6>
+  <h6 class="m-5"><span class="bg-light text-nowrap">　会員の方はこちらからログイン　</span></h6>
 
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <div class="row justify-content-center">
-         <label for="email" class="col-sm-2 text-secondary">メールアドレス</label>
-         <div class="col-sm-5">
+         <label for="email" class="col-md-2 col-10 text-secondary text-nowrap">メールアドレス</label>
+         <div class="col-5">
           <%= f.email_field :email,id:"email", :size=>"40",placeholder:"sample@example.com", autofocus: true, autocomplete: "email",class:"form-control-sm" %>
         </div>
       </div>
 
       <div class="row justify-content-center pt-3">
-        <label for="password" class="col-sm-2 col-form-label text-secondary">パスワード</label>
-        <div class="col-sm-5">
+        <label for="password" class="col-md-2 col-10 col-form-label text-secondary text-nowrap">パスワード</label>
+        <div class="col-5">
           <%= f.password_field :password,id:"password", :size=>"40", autocomplete: "current-password",class:"form-control-sm"  %>
         </div>
       </div>
@@ -29,15 +29,15 @@
       <% end %>
 
       <div class="row justify-content-center pt-4">
-        <label class="col-sm-2 col-form-label"></label>
-        <div class="actions col-sm-5">
-        <%= f.submit "ログイン",class:"btn btn-primary col-4" %>
+        <label class="col-2 col-form-label"></label>
+        <div class="actions col-5">
+        <%= f.submit "ログイン",class:"btn btn-primary col-md-4 col-sm-6 col-10" %>
         </div>
       </div>
     <% end %>
 
-  <h6 class="m-5"><span class="bg-light">　会員登録がお済みでない方　</span></h6>
-  <div class="row justify-content-center">
+  <h6 class="m-5"><span class="bg-light text-nowrap">　会員登録がお済みでない方　</span></h6>
+  <div class="row justify-content-center text-nowrap ml-sm-0 ml-5">
     <p><%= render "public/shared/links" %>　から新規登録を行なってください。</p>
   </div>
 
