@@ -1,76 +1,77 @@
-<h5 class="m-5"><span class="bg-light">　注文情報確認　</span></h5>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
+  <h5 class="m-5"><span class="bg-light">　注文情報確認　</span></h5>
 
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td>
-        <%= image_tag cart_item.item.get_image(50,50) %>
-        <%= cart_item.item.name %>
-      </td>
-      <td><%= cart_item.item.with_tax_price %></td>
-      <td><%= cart_item.amount %></td>
-      <td><%= cart_item.subtotal %>
-          <% @total+=cart_item.subtotal %>
-      </td>
-    </tr>
+  <div class="row">
+    <div class="col-lg-8 col-10">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-active">
+            <th style="width :40%">商品名</th>
+            <th style="width :20%">単価（税込）</th>
+            <th style="width :20%">数量</th>
+            <th style="width :20%">小計</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td class="align-middle">
+              <%= image_tag cart_item.item.get_image(50,50) %>
+              <%= cart_item.item.name %>
+            </td>
+            <td class="align-middle"><%= cart_item.item.with_tax_price %></td>
+            <td class="align-middle"><%= cart_item.amount %></td>
+            <td class="align-middle"><%= cart_item.subtotal %>
+              <% @total+=cart_item.subtotal %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-lg-4 col-10">
+    <table style="width:200px;" class="table-bordered">
+      <tr style="height:50px;">
+        <th class="table-active">送料</th><td class="align-middle"><%= @postage %></td>
+      </tr>
+
+      <tr style="height:50px;">
+        <th class="table-active">商品合計</th><td class="align-middle"><%= @total.to_s(:delimited) %></td>
+      </tr>
+
+      <tr style="height:50px;">
+        <th class="table-active">請求金額</th><td class="align-middle"><%= (@postage+@total).to_s(:delimited) %></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <p class="mt-4"><strong>支払方法　</strong><%= Order.payment_methods_i18n[:"#{params[:order][:payment_method]}"] %></p>
+
+
+  <p class="mt-4"><strong>お届け先　</strong><%= '〒'+'  '+@order.delivery_postal_code+'  '+ @order.delivery_address %><br>
+  　　　　　<%= @order.delivery_name %></p>
+
+
+  <%= form_with model:@order,url:'/orders',method: :post do |f| %>
+    <%= f.hidden_field:delivery_postal_code,:value => @order.delivery_postal_code %>
+    <%= f.hidden_field:delivery_address,:value => @order.delivery_address %>
+    <%= f.hidden_field:delivery_name,:value => @order.delivery_name %>
+    <%= f.hidden_field:postage,:value => @postage %>
+    <%= f.hidden_field:payment,:value => @postage+@total %>
+    <%= f.hidden_field:order_status,:value => "not_payment" %>
+
+    <div class="row justify-content-center mt-3">
+    <% if CartItem.find_by(customer_id:current_customer) %>
+      <%= f.submit"注文を確定する",class:"btn btn-success" %>
+    <% else %>
+      <p>カート内に商品がありません</p>
     <% end %>
-  </tbody>
-</table>
+    </div>
 
-<table>
-  <tr>
-    <th>送料</th><td><%= @postage %></td>
-  </tr>
-
-  <tr>
-    <th>商品合計</th><td><%= @total.to_s(:delimited) %></td>
-  </tr>
-
-  <tr>
-    <th>請求金額</th><td><%= (@postage+@total).to_s(:delimited) %></td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>支払方法</th>
-    <td><%= Order.payment_methods_i18n[:"#{params[:order][:payment_method]}"] %></td>
-  </tr>
-
-  <tr>
-    <th>お届け先</th>
-    <td>
-      <%= @order.delivery_postal_code %>
-      <%= @order.delivery_address %><br>
-      <%= @order.delivery_name %>
-    </td>
-
-
-  </tr>
-</table>
-
-<%= form_with model:@order,url:'/orders',method: :post do |f| %>
-  <%= f.hidden_field:delivery_postal_code,:value => @order.delivery_postal_code %>
-  <%= f.hidden_field:delivery_address,:value => @order.delivery_address %>
-  <%= f.hidden_field:delivery_name,:value => @order.delivery_name %>
-  <%= f.hidden_field:postage,:value => @postage %>
-  <%= f.hidden_field:payment,:value => @postage+@total %>
-  <%= f.hidden_field:order_status,:value => "not_payment" %>
-
-  <% if CartItem.find_by(customer_id:current_customer) %>
-    <%= f.submit"注文を確定する" %>
-  <% else %>
-    <p>カート内に商品がありません</p>
   <% end %>
 
-<% end %>
+</div>
