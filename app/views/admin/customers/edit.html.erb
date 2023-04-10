@@ -11,7 +11,7 @@
     <% end %>
   </div>
 
-  <h4><%= "#{@customer.last_name}#{@customer.first_name}" %>さんの会員情報編集</h4>
+  <h5 class="m-5"><span class="bg-light">　<%= "#{@customer.last_name}#{@customer.first_name}" %>さんの会員情報編集　</span></h5>
 
   <%= form_with model:@customer,url:admin_customer_path(@customer.id),method: :patch do |f| %>
   <div class="row">
@@ -63,14 +63,14 @@
   </div>
 
   <div class="row">
-    <label for="email" class="col-md-2 col-form-label">メールアドレス</label>
+    <label for="email" class="col-md-2 col-form-label text-nowrap">メールアドレス</label>
     <div class="col-md-3">
       <%= f.email_field:email,id:"email" %>
     </div>
   </div>
 
   <div class="row">
-    <label for="status" class="col-md-2 col-form-label">会員ステータス</label>
+    <label for="status" class="col-md-2 col-form-label text-nowrap">会員ステータス</label>
     <div class="col-md-3 mt-2">
       <%= f.radio_button:is_deleted,"valid",id:"status" %>
       <%= f.label:is_deleted,"有効",{style: "display :inline-block"} %>
