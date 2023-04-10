@@ -18,75 +18,75 @@
     </div>
 
 
-  <div class="row ml-3">
-    <p class="col-lg-2 col-12 col-form-label">フリガナ</p>
-    <label for="lastNameKana" class="col-md-1 col-sm-2 col-3 col-form-label text-right text-nowrap">(セイ)</label>
-    <div class="col-lg-3 col-md-10 col-sm-8 col-5 mr-5">
-      <%= f.text_field :last_name_kana,id:"lastNameKana",:size=>"30",placeholder:"レイワ", autocomplete: "last_name_kana",class:"col-form-label" %>
+    <div class="row ml-3">
+      <p class="col-lg-2 col-12 col-form-label">フリガナ</p>
+      <label for="lastNameKana" class="col-md-1 col-sm-2 col-3 col-form-label text-right text-nowrap">(セイ)</label>
+      <div class="col-lg-3 col-md-10 col-sm-8 col-5 mr-5">
+        <%= f.text_field :last_name_kana,id:"lastNameKana",:size=>"30",placeholder:"レイワ", autocomplete: "last_name_kana",class:"col-form-label" %>
+      </div>
+      <label for="firstNameKana" class="col-md-1 col-sm-2 col-3 col-form-label text-right text-nowrap">(メイ)</label>
+      <div class="col-lg-3 col-md-10 col-sm-8 col-5">
+        <%= f.text_field :first_name_kana,id:"firstNameKana",:size=>"30",placeholder:"ミチコ", autocomplete: "first_name_kana",class:"col-form-label"  %>
+      </div>
     </div>
-    <label for="firstNameKana" class="col-md-1 col-sm-2 col-3 col-form-label text-right text-nowrap">(メイ)</label>
-    <div class="col-lg-3 col-md-10 col-sm-8 col-5">
-      <%= f.text_field :first_name_kana,id:"firstNameKana",:size=>"30",placeholder:"ミチコ", autocomplete: "first_name_kana",class:"col-form-label"  %>
-    </div>
-  </div>
 
-  <div class="row ml-3 mt-3">
-    <label for="email" class="col-lg-2 col-form-label">メールアドレス</label>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-    <%= f.email_field :email,id:"email",:size=>"30",placeholder:"sample@example.com", autocomplete: "email",class:"col-form-label" %>
+    <div class="row ml-3 mt-3">
+      <label for="email" class="col-lg-2 col-form-label">メールアドレス</label>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+      <%= f.email_field :email,id:"email",:size=>"30",placeholder:"sample@example.com", autocomplete: "email",class:"col-form-label" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row ml-3 mt-3">
-    <label for="postal" class="col-lg-2 col-form-label text-nowrap">郵便番号(ハイフンなし)</label>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-    <%= f.text_field :postal_code,id:"postal",:size=>"30",placeholder:"0000000", autocomplete: "postal_code",class:"col-form-label" %>
+    <div class="row ml-3 mt-3">
+      <label for="postal" class="col-lg-2 col-form-label text-nowrap">郵便番号(ハイフンなし)</label>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+      <%= f.text_field :postal_code,id:"postal",:size=>"30",placeholder:"0000000", autocomplete: "postal_code",class:"col-form-label" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row ml-3 mt-3">
-    <label for="address" class="col-lg-2 col-form-label">住所</label>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-7">
-    <%= f.text_field :address,id:"address",:size=>"80",placeholder:"東京都渋谷区代々木神園町0-0", autocomplete: "address",class:"col-form-label" %>
+    <div class="row ml-3 mt-3">
+      <label for="address" class="col-lg-2 col-form-label">住所</label>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-7">
+      <%= f.text_field :address,id:"address",:size=>"80",placeholder:"東京都渋谷区代々木神園町0-0", autocomplete: "address",class:"col-form-label" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row ml-3 mt-3">
-    <label for="telephone" class="col-lg-2 col-form-label text-nowrap">電話番号（ハイフンなし）</label>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-    <%= f.text_field :telephone_number,id:"telephone",:size=>"30",placeholder:"00000000000", autocomplete: "telephone_number",class:"col-form-label" %>
+    <div class="row ml-3 mt-3">
+      <label for="telephone" class="col-lg-2 col-form-label text-nowrap">電話番号（ハイフンなし）</label>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+      <%= f.text_field :telephone_number,id:"telephone",:size=>"30",placeholder:"00000000000", autocomplete: "telephone_number",class:"col-form-label" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row ml-3 mt-3">
-    <% if @minimum_password_length %>
-    <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
-    <% end %><br />
-    <label for="password" class="col-lg-2 col-form-label text-nowrap">パスワード(6文字以上)</label>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-    <%= f.password_field :password,id:"password",:size=>"30",autocomplete: "new-password",class:"col-form-label"  %>
+    <div class="row ml-3 mt-3">
+      <% if @minimum_password_length %>
+      <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
+      <% end %><br />
+      <label for="password" class="col-lg-2 col-form-label text-nowrap">パスワード(6文字以上)</label>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+      <%= f.password_field :password,id:"password",:size=>"30",autocomplete: "new-password",class:"col-form-label"  %>
+      </div>
     </div>
-  </div>
 
-  <div class="row ml-3 mt-3">
-    <label for="password_confirmation" class="col-lg-2 col-form-label text-nowrap">パスワード(確認用)</label>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-    <%= f.password_field :password_confirmation,id:"password_confirmation",:size=>"30", autocomplete: "new-password",class:"col-form-label"  %>
+    <div class="row ml-3 mt-3">
+      <label for="password_confirmation" class="col-lg-2 col-form-label text-nowrap">パスワード(確認用)</label>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+      <%= f.password_field :password_confirmation,id:"password_confirmation",:size=>"30", autocomplete: "new-password",class:"col-form-label"  %>
+      </div>
     </div>
-  </div>
 
-  <div class="row ml-3 mt-5">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-3 actions">
-      <%= f.submit "新規登録",class:"btn btn-success col-11" %>
+    <div class="row ml-3 mt-5">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3 actions">
+        <%= f.submit "新規登録",class:"btn btn-success col-11" %>
+      </div>
     </div>
-  </div>
   </form>
 
   <% end %>
