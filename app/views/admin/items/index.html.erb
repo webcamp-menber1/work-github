@@ -5,7 +5,7 @@
   </div>
 
   <div class="row">
-    <table class="table table-borderless">
+    <table class="table table-borderless text-nowrap">
       <thead>
         <tr class="table-secondary">
           <th style="width: 10%">商品ID</th>
@@ -35,6 +35,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @items %>
+
   </div>
+  <%= paginate @items %>
 </div>

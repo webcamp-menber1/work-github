@@ -11,9 +11,9 @@
     <% end %>
   </div>
 
-  <h5 style="margin:50px 120px;"><span class="bg-light">　注文履歴詳細　</span></h5>
+  <h5 class="m-5"><span class="bg-light">　注文履歴詳細　</span></h5>
 
-  <table class="table table-borderless">
+  <table class="table table-borderless text-nowrap">
     <tr>
       <th style="width: 20%">購入者</th><td style="width: 80%" ><%= link_to "#{@order.customer.last_name}#{@order.customer.first_name}",admin_customer_path(@order.id),class:"text-dark border-bottom border-dark" %></td>
     </tr>
@@ -45,7 +45,7 @@
 
   <div class="row">
     <div class="col-lg-8">
-      <table class="table table-borderless">
+      <table class="table table-borderless text-nowrap">
         <thead>
           <tr class="table-secondary">
             <th style="width: 30%">商品名</th>
