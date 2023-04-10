@@ -4,7 +4,7 @@
 
   <p><strong>登録情報　　　</strong><%= link_to "編集する",'/customers/information/edit',class:"btn btn-success col-lg-2 col-sm-4 col-6" %></p>
 
-  <table class="table table-bordered">
+  <table class="table table-bordered text-nowrap">
     <tr>
       <th class="table-active">氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td>
     </tr>
