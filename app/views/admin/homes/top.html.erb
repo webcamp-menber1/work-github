@@ -1,9 +1,8 @@
 <div class="container">
 
-  <h5 style="margin:50px 120px;"><span class="bg-light">　注文履歴一覧　</span></h5>
+  <h5 class="m-5"><span class="bg-light">　注文履歴一覧　</span></h5>
 
-  <div class="row">
-    <table class="table w-75 mx-auto">
+    <table class="table w-75 mx-auto text-nowrap">
       <thead>
         <tr class="table-secondary">
           <th style="width: 25%">購入日時</th>
@@ -26,10 +25,8 @@
             <td><%= Order.order_statuses_i18n[:"#{order.order_status}"] %></td>
           </tr>
         <% end %>
-
       </tbody>
-      <%= paginate @orders %>
     </table>
 
-  </div>
+  <%= paginate @orders %>
 </div>
