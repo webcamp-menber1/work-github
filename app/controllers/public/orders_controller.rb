@@ -45,10 +45,17 @@ class Public::OrdersController < ApplicationController
        @order.delivery_address=current_customer.address
        @order.delivery_name=current_customer.last_name+current_customer.first_name
     elsif @params==1
-       @address=Address.find(params[:order][:address_id])
-       @order.delivery_postal_code=@address.postal_code
-       @order.delivery_address=@address.address
-       @order.delivery_name=@address.name
+      if Address.find_by(customer_id:current_customer)
+           @address=Address.find(params[:order][:address_id])
+           @order.delivery_postal_code=@address.postal_code
+           @order.delivery_address=@address.address
+           @order.delivery_name=@address.name
+      else
+        @address=Address.new
+        @addresses=current_customer.addresses
+        flash[:notice]="配送先を登録してください。"
+        render:'public/addresses/index'
+      end
     else
 
     end
