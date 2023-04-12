@@ -5,12 +5,13 @@ class Admin::OrderDetailsController < ApplicationController
     order_details=order.order_details
     order_detail.order_id=order.id
     order_detail.update(order_detail_paramas)
-      if order_details.all?{|order_detail| order_detail.production_status=="produced"}
-         order.update(order_status: "preparing_to_ship")
-      else
+    if order_detail.production_status=="making"
+       order.update(order_status: "production")
+    elsif order_details.all?{|order_detail| order_detail.production_status=="produced"}
+          order.update(order_status: "preparing_to_ship")
+    else
 
-      end
-
+    end
     flash[:notice]="更新が成功しました"
     redirect_to admin_order_path(order_detail.order_id)
   end
