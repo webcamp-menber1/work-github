@@ -11,14 +11,18 @@
         <p>(税込）</p>
       </div>
 
-      <% if customer_signed_in? %>
-        <%= form_with model:@cart_item,url:'/cart_items',method: :post do |f| %>
-          <%= f.hidden_field:item_id,:value => @item.id %>
-          <%= f.select:amount,*[1..100],{include_blank:'個数選択　　'},{class:"mr-3 mt-3",required: true} %>
-          <%= f.submit"カートに入れる",class:"btn btn-success btn-sm mt-1" %>
+      <% if @item.is_active=="sale" %>
+        <% if customer_signed_in? %>
+          <%= form_with model:@cart_item,url:'/cart_items',method: :post do |f| %>
+            <%= f.hidden_field:item_id,:value => @item.id %>
+            <%= f.select:amount,*[1..100],{include_blank:'個数選択　　'},{class:"mr-3 mt-3",required: true} %>
+            <%= f.submit"カートに入れる",class:"btn btn-success btn-sm mt-1" %>
+          <% end %>
+        <% else %>
+
         <% end %>
       <% else %>
-
+        <div class="text-secondary"><%= Item.is_actives_i18n[:"#{@item.is_active}"] %></div>
       <% end %>
     </div>
   </div>
