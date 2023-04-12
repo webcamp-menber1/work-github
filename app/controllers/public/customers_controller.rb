@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
     @customer=Customer.find(current_customer.id)
     @customer.update(is_deleted: "withdrawal")
     reset_session
-    redirect_to '/'
+    redirect_to 'root_path'
   end
 
   private
