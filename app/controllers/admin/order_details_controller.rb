@@ -1,9 +1,11 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
-    @order_detail=OrderDetail.find(params[:id])
-    @order_detail.update(order_detail_paramas)
+    order=Order.find(params[:order_id])
+    order_detail=OrderDetail.find(params[:id])
+    order_detail.order_id=order.id
+    order_detail.update(order_detail_paramas)
     flash[:notice]="更新が成功しました"
-    redirect_to admin_order_path(@order_detail.order.id)
+    redirect_to admin_order_path(order_detail.order_id)
   end
 
   private
