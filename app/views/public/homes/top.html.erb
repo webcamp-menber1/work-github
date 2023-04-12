@@ -22,6 +22,15 @@
         <div class="row mx-auto mt-3">
           ¥<%= item.price %>
         </div>
+
+        <div class="row mx-auto mt-3">
+          <% if item.is_active=="sale" %>
+            <div class="text-success"><%= Item.is_actives_i18n[:"#{item.is_active}"] %></div>
+          <% else %>
+            <div class="text-secondary"><%= Item.is_actives_i18n[:"#{item.is_active}"] %></div>
+          <% end %>
+        </div>
+
       </div>
     <% end %>
   </div>

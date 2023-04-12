@@ -14,7 +14,12 @@
  <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href='/'><i class="fas fa-birthday-cake"></i>ながのCAKE</a>
+          <a class="navbar-brand p-3 mr-lg-5" href='/'><i class="fas fa-birthday-cake"></i>ながのCAKE</a>
+          <% if customer_signed_in? %>
+            <div class="ml-lg-5">
+            <%= 'ようこそ、'+current_customer.last_name+'さん！'%>
+            </div>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -42,6 +47,7 @@
               </li>
 
               <% elsif customer_signed_in? %>
+
               <li class="nav-item">
                 <%= link_to "マイページ" ,'/customers/my_page',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
               </li>
@@ -55,7 +61,7 @@
               </li>
 
               <li class="nav-item">
-                <%= link_to "ログアウト",destroy_admin_session_path,method: :delete,class:"btn btn-outline-secondary navlink text-dark" %>
+                <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:"btn btn-outline-secondary navlink text-dark" %>
               </li>
 
             <% else %>

@@ -62,6 +62,7 @@
     <%= f.hidden_field:delivery_name,:value => @order.delivery_name %>
     <%= f.hidden_field:postage,:value => @postage %>
     <%= f.hidden_field:payment,:value => @postage+@total %>
+    <%= f.hidden_field:payment_method,:value => params[:order][:payment_method] %>
     <%= f.hidden_field:order_status,:value => "not_payment" %>
 
     <div class="row justify-content-center mt-3">
