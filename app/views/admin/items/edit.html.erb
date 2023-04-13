@@ -16,42 +16,42 @@
   <%= form_with model:@item,url:admin_item_path(@item.id),method: :patch do |f| %>
     <div class="row justify-content-center">
       <label for="itemImage" class="col-lg-2 col-sm-4 col-form-label">商品画像</label>
-      <div class="col-lg-6 col-sm-7">
+      <div class="col-lg-6 col-sm-8">
         <%= f.file_field:image,accept:"image/*",id:"itemImage" %>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <label for="itemName" class="col-lg-2 col-sm-4 col-form-label">商品名</label>
-      <div class="col-lg-6 col-sm-7">
+      <div class="col-lg-6 col-sm-8">
         <%= f.text_field:name,id:"itemName", :size=>"30" %>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <label for="itemIntroduction" class="col-lg-2 col-sm-4 col-form-label">商品説明</label>
-      <div class="col-lg-6 col-sm-7">
+      <div class="col-lg-6 col-sm-8">
         <%= f.text_area:introduction,size:"30x7",id:"itemIntroduction" %>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <label for="genre" class="col-lg-2 col-sm-4 col-form-label">ジャンル</label>
-      <div class="col-lg-6 col-sm-7 pt-1">
+      <div class="col-lg-6 col-sm-8 pt-1">
         <%= f.select:genre_id,options_from_collection_for_select(Genre.all,:id,:name),{},{class:"select"} %>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <label for="price" class="col-lg-2 col-sm-4 col-form-label">税抜価格</label>
-      <div class="col-lg-6 col-sm-7">
+      <div class="col-lg-6 col-sm-8">
         <p><%= f.text_field:price,id:"price", :size=>"30" %>円</p>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <label for="is_active" class="col-lg-2 col-sm-4 col-form-label">販売ステータス</label>
-      <div class="col-lg-6 col-sm-7 pt-2">
+      <div class="col-lg-6 col-sm-8 pt-2">
         <%= f.radio_button:is_active,"sale",id:"is_active" %>
         <%= f.label:is_active,"販売中",{style: "display: inline-block;"} %>
         <%= f.radio_button:is_active,"suspended_sales",class:"ml-3" %>

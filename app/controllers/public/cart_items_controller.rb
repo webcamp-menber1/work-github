@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action:authenticate_customer!
+
   def index
     @cart_items=current_customer.cart_items
     @total=0
@@ -31,6 +33,7 @@ class Public::CartItemsController < ApplicationController
   def update
     cart_item=CartItem.find(params[:id])
     cart_item.update(cart_item_params)
+    flash[:notice]="商品の数量を変更しました。"
     redirect_to '/cart_items'
   end
 

@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+  before_action:authenticate_admin!
 
   def create
     @genre=Genre.new(genre_params)
@@ -23,7 +24,7 @@ class Admin::GenresController < ApplicationController
   def update
     @genre=Genre.find(params[:id])
     if @genre.update(genre_params)
-      flash[:notice]="変更に成功しました。"
+      flash[:notice]="変更しました。"
       redirect_to '/admin/genres'
     else
       render:edit
