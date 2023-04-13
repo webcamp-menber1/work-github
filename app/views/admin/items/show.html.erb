@@ -8,8 +8,8 @@
     <%= image_tag @item.get_image(200,200) %>
    </div>
 
-    <div class="offset-1 col-md-8 mt-3">
-      <table class="table table-borderless text-nowrap ml-4">
+    <div class="offset-sm-1 col-md-8 mt-3">
+      <table class="table table-borderless ml-4">
       <tr><th style="width: 30%">商品名</th><td style="width: 70%"><%= @item.name %></td></tr>
       <tr><th style="width: 30%">商品説明</th><td style="width: 70%"><%= @item.introduction %></td></tr>
       <tr><th style="width: 30%">ジャンル</th><td style="width: 70%"><%= @item.genre.name %></td></tr>
