@@ -1,24 +1,29 @@
-# README
+# DMM WEBCAMP 応用知識学習フェーズ　ECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+洋菓子店「ながのCAKE」の商品を通販するための管理機能を含んだ通販サイトの実装です。
 
-Things you may want to cover:
 
-* Ruby version
+会員側実装機能
 
-* System dependencies
+・会員登録・ログイン機能
 
-* Configuration
+・商品閲覧
 
-* Database creation
+・カートに商品を入れる→注文する→配送される
 
-* Database initialization
+・注文履歴の閲覧
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+管理者側実装機能
 
-* Deployment instructions
+・ログイン機能
 
-* ...
+・商品登録・編集
+
+・会員情報閲覧・編集
+
+・注文履歴閲覧・編集
+
+
+
+
