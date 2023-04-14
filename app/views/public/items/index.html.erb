@@ -4,16 +4,16 @@
   <div class="row">
   <% @items.each do |item| %>
     <div class="col-lg-3 col-md-5 col-10 m-2 mx-auto">
-      <div style="width:200px; height:200px;" class="row mx-auto">
+      <div style="width:200px; height:200px;" class="row">
         <%= link_to (image_tag item.get_image(200,200)),item_path(item.id),class:"d-flex align-items-center" %>
       </div>
-      <div class="row mx-auto mt-3 text-nowrap">
+      <div style="height:50px;" class="row mt-3 text-nowrap">
         <%= item.name %>
       </div>
-      <div class="row mx-auto mt-3">
+      <div class="row mt-3">
         ¥<%= item.price%>
       </div>
-      <div class="row mx-auto mt-3">
+      <div class="row mt-3">
         <% if item.is_active=="sale" %>
           <div class="text-success"><%= Item.is_actives_i18n[:"#{item.is_active}"] %></div>
         <% else %>
