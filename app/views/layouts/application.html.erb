@@ -2,15 +2,118 @@
 <html>
   <head>
     <title>WorkGithub</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <h2><a class=" text-dark p-3 mr-lg-5" href='/'><i class="fas fa-birthday-cake"></i>ながのCAKE</a></h2>
+          <% if customer_signed_in? %>
+            <div class="ml-lg-5">
+            <%= 'ようこそ、'+current_customer.last_name+'さん！'%>
+            </div>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "商品一覧",'/admin/items',class:"btn btn-outline-secondary mr-3 navlink text-dark"%>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "会員一覧",'/admin/customers',class:"btn btn-outline-secondary mr-3 navlink text-dark"%>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "注文履歴一覧",'/admin',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ジャンル一覧",'/admin/genres',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ログアウト",destroy_admin_session_path,method: :delete,class:"btn btn-outline-secondary navlink text-dark" %>
+              </li>
+
+              <% elsif customer_signed_in? %>
+
+              <li class="nav-item">
+                <%= link_to "マイページ" ,'/customers/my_page',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "商品一覧",'/items',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "カート",'/cart_items',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:"btn btn-outline-secondary navlink text-dark" %>
+              </li>
+
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "About",about_path,class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "商品一覧",'/items',class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+               </li>
+
+              <li class="nav-item">
+                <%= link_to "新規登録",new_customer_registration_path,class:"btn btn-outline-secondary mr-3 navlink text-dark" %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ログイン",new_customer_session_path,class:"btn btn-outline-secondary navlink text-dark" %>
+              </li>
+
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag :div, message, class: message_type %>
+    <% end %>
+
     <%= yield %>
+    </main>
+
+    <footer class="bg-secondary text-white mt-5 pt-5 pb-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-5 ml-md-5 mt-2">
+            <p>長野県の洋菓子店</p>
+            <h4><i class="fas fa-birthday-cake"></i>ながのCAKE</h4>
+          </div>
+          <div class="col-md-7 col-sm-6">
+            <h6 class="mt-2 mb-3">Link</h6>
+            <ul class="p-0 list-unstyled">
+              <li>会社概要</li>
+              <li>プライバシーポリシー</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+
   </body>
 </html>

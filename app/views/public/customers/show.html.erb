@@ -1,0 +1,35 @@
+<div class="container">
+
+  <h5 class="m-5"><span class="bg-light">　マイページ　</span></h5>
+
+  <p><strong>登録情報　　　</strong><%= link_to "編集する",'/customers/information/edit',class:"btn btn-success col-lg-2 col-sm-4 col-6" %></p>
+
+  <table class="table table-bordered text-nowrap">
+    <tr>
+      <th style="width:25%;" class="table-active">氏名</th><td style="width:75%;"><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
+
+    <tr>
+      <th class="table-active">カナ</th><td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+    </tr>
+
+    <tr>
+      <th class="table-active">郵便番号</th><td><%= @customer.postal_code %></td>
+    </tr>
+
+    <tr>
+     <th class="table-active">住所</th><td><%= @customer.address %></td>
+    </tr>
+
+    <tr>
+      <th class="table-active">電話番号</th><td><%= @customer.telephone_number %></td>
+    </tr>
+
+    <tr>
+     <th class="table-active">メールアドレス</th><td><%= @customer.email %></td>
+    </tr>
+   </table>
+
+  <p><strong>配送先　　　</strong><%= link_to "一覧を見る",'/addresses',class:"btn btn-primary col-lg-2 col-sm-4 col-6" %></p>
+  <p><strong>注文履歴　　</strong><%= link_to "一覧を見る",'/orders',class:"btn btn-primary col-lg-2 col-sm-4 col-6" %></p>
+</div>

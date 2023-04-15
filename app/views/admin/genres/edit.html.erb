@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="m-3">
+    <% if @genre.errors.any? %>
+      <h5><%= @genre.errors.count %>件のエラーが発生しました。</h5>
+      <% @genre.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h5 class="m-5"><span class="bg-light">　ジャンル編集　</span></h5>
+
+  <%= form_with model:@genre,url:admin_genre_path(@genre.id),method: :patch do |f| %>
+  <div class="row ml-5">
+    <label for="genreName" class="col-md-2 col-form-label mt-1">ジャンル名</label>
+
+    <div class="col-lg-3 col-md-4">
+      <%= f.text_field:name,id:"genreName",class:"mt-2" %>
+    </div>
+
+    <div class="col-3">
+      <%= f.submit"変更を保存",class:"btn btn-success m-1" %>
+    </div>
+
+  </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+
+  <% if @address.errors.any? %>
+    <h5><%= @address.errors.count %>件のエラーが発生しました。</h5>
+    <% @address.errors.full_messages.each do |message| %>
+      <ul>
+        <li><%= message %></li>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <h5 class="m-5"><span class="bg-light">　配送先編集　</span></h5>
+
+  <%= form_with model:@address,url:address_path(@address.id),method: :patch do |f| %>
+
+  <div class="row">
+    <label for="postal" class="col-lg-3 col-10">郵便番号（ハイフンなし）</label>
+    <div class="col-4">
+      <%= f.text_field:postal_code,id:"postal",:size=>"20" %>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <label for="address" class="col-lg-3 col-10">住所</label>
+    <div class="col-4">
+      <%= f.text_field:address,id:"address",:size=>"70" %>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <label for="name" class="col-lg-3 col-10">宛名</label>
+    <div class="col-4">
+      <%= f.text_field:name,id:"name",:size=>"20" %>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-10 offset-sm-3">
+      <%= f.submit"変更内容を保存",class:"btn btn-success col-12" %>
+    </div>
+  </div>
+
+
+    <% end %>
+  </div>
